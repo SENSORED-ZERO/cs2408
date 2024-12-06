@@ -4,31 +4,42 @@ $.ajax({
     url: "./api/index.json", dataType: 'json',
     success: function (result) {
         re = $.parseJSON(JSON.stringify(result));
-        var i = 0;
+        let sum = 0;
+        for(dormitory in re.dormitories)
+        {
+            sum+=re.dormitories[dormitory].members.length;
+        }
+        let i = 0;
         for (var k = 0; k < re.rand_num; k++) {
             while (true) {
-                let dormitory = rnd(i++) % re.dormitories.length;
-                dormitory = re.dormitories[dormitory];
-                let member = rnd(i++) % dormitory.members.length;
-                let dormitory_member = dormitory.members[member];
-                if (!dormitory_member.visited) {
-                    dormitory_member.dormintory = dormitory.name;
-                    re.randoms[0][k] = dormitory_member;
-                    dormitory.members[member].visited = true;
+                let number = rnd(i++)%sum;
+                let j = 0;
+                while(number >= re.dormitories[j].members.length)
+                {
+                    number -= re.dormitories[j].members.length;
+                    j++;
+                }
+                if(re.dormitories[j].members[number].visited){continue;}
+                else{
+                    re.dormitories[j].members[number].visited = true;
+                    re.randoms[0][k] = re.dormitories[j].members[number];
                     break;
                 }
             }
         }
         for (var k = 0; k < re.rand_num; k++) {
             while (true) {
-                let dormitory = rnd(i++) % re.dormitories.length;
-                dormitory = re.dormitories[dormitory];
-                let member = rnd(i++) % dormitory.members.length;
-                let dormitory_member = dormitory.members[member];
-                if (!dormitory_member.visited) {
-                    dormitory_member.dormintory = dormitory.name;
-                    re.randoms[1][k] = dormitory_member;
-                    dormitory.members[member].visited = true;
+                let number = rnd(i++)%sum;
+                let j = 0;
+                while(number >= re.dormitories[j].members.length)
+                {
+                    number -= re.dormitories[j].members.length;
+                    j++;
+                }
+                if(re.dormitories[j].members[number].visited){continue;}
+                else{
+                    re.dormitories[j].members[number].visited = true;
+                    re.randoms[1][k] = re.dormitories[j].members[number];
                     break;
                 }
             }

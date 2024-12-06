@@ -1,14 +1,6 @@
 {
   "sign": "明德厚学，求是创新",
   "rand_num": 3,
-  "exhibitions": [
-    {
-      "name": "丁一",
-      "dormitory": "323",
-      "url": "https://ssfdcadm.github.io/web/",
-      "intro": "波士顿凯尔特人队"
-    }
-  ],
   "randoms": [
     [],
     []
@@ -36,9 +28,7 @@
         },
         {
           "name": "金峻田",
-          "url": "https://clairvoyanttt.github.io/
-
-",
+          "url": "https://clairvoyanttt.github.io/",
           "intro": "花谱人物介绍"
         }
       ]
